@@ -473,9 +473,10 @@ impl Message {
         } else {
             &b_sig
         };
-        if b_sig != sig.as_str() {
-            return Err(MessageError::UnmatchedBodySignature);
-        }
+        // EMMANUEL: commenting this as a workaround for https://gitlab.freedesktop.org/zeenix/zbus/-/issues/104
+        // if b_sig != sig.as_str() {
+        //     return Err(MessageError::UnmatchedBodySignature);
+        // }
 
         self.body_unchecked()
     }
